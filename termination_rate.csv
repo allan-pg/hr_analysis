@@ -1,0 +1,14 @@
+department,total_count,terminated_count,termination_rate
+Auditing,50,8,0.1600
+Legal,299,39,0.1304
+Training,1622,192,0.1184
+"Research and Development",1032,119,0.1153
+"Human Resources",1727,194,0.1123
+Accounting,3192,358,0.1122
+Sales,1745,194,0.1112
+Engineering,6387,705,0.1104
+Services,1618,175,0.1082
+"Product Management",623,67,0.1075
+Support,903,93,0.1030
+"Business Development",1569,148,0.0943
+Marketing,480,45,0.0938
