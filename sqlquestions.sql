@@ -1,0 +1,10 @@
+-- Questions
+-- 1. what is the race /ethnicity of employees in the company
+-- 2. What is the age breakdown of employees in the company
+-- 3. what is the age distribution of employees in the company
+-- 4. how many employees work at headquarters vs remote location
+-- 5. What is the distribution of jobs across the company
+-- 6. which department has highest turnover
+-- 7 what is distribution of employees across locations by city and state
+-- 8. how has the company employee count changed over time based on hire and term dates
+-- 9. what is the tenure distribution for each department
