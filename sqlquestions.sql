@@ -65,7 +65,20 @@ from employee
 where age >= 18 and termdate = ''
 group by department, gender
 order by department;
--- 6. which department has highest turnover
+-- the average of employment for the employees whose contract is terminated
+select
+       round(avg(datediff(termdate, hire_date))/365, 0) as avg_employment_time
+       from employee
+       where termdate <= current_date() and termdate <> '' and age >= 18;
+-- 6. what is the distribution of job titles
+select * from employee;
+
+select 
+	 jobtitle,
+     count(*) as count
+from employee
+where age >= 18 and termdate = ''
+group by jobtitle;
 -- 7 what is distribution of employees across locations by city and state
 select * from employee;
 
@@ -77,4 +90,47 @@ where age >= 18 and termdate = ''
 group by location_city, location_state
 order by count desc;
 -- 8. how has the company employee count changed over time based on hire and term dates
--- 9. what is the tenure distribution for each department
+
+select * from employee;
+
+-- 9. how the employee count has changed over the years
+
+select * from employee;
+
+select year,
+		hires,
+        terminations,
+        hires - terminations as net_change,
+        round((hires- terminations)/hires * 100, 2) as net_change_percent
+from(
+	select year(hire_date) as year,
+    count(*) as hires,
+    sum(case when termdate <> '' and termdate <= current_date() then 1 else 0 end) as terminations
+    from employee
+    where age >= 18
+    group by year(hire_date)
+    ) as subquery
+order by year asc;
+
+-- department with the highest turn over rate
+select department,
+      total_count,
+      terminated_count,
+      terminated_count/total_count as termination_rate
+from (
+      select department,
+      count(*) as total_count,
+      sum(case when termdate <> '' and termdate <= current_date() then 1 else 0 end) as terminated_count
+      from employee
+      where age >= 18
+      group by department) as subquery
+      order by termination_rate desc;
+
+-- what is the tenure distribution
+
+select department,
+	   round(avg(datediff(termdate, hire_date)/365), 0) as avg_tenure
+       from employee
+       where termdate <= current_date() and termdate <> '' and age >= 18
+       group by department;
+      
